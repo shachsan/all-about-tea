@@ -1,4 +1,14 @@
-<div>
-  Shop page
+<div class="row">
+  <div class="col-xs-12">
+    {{allTeas.length}} Teas
+  </div>
+
+  <div *ngIf="allTeas.length">
+    <div *ngFor="let tea of allTeas">
+      <ul class="list-group" *ngFor="let detail of tea | keyvalue">
+        <li class="list-item">{{detail.key}}: {{detail.value}}</li>
+      </ul>
+    </div>
+  </div>
 </div>
 

@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
+import { ProductRepository } from './models/product.repository';
+import { StaticDataSource } from './models/static.dataSouce';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductRepository, StaticDataSource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,14 +10,15 @@ export class ProductRepository{
     constructor(private dataSource:StaticDataSource){
         dataSource.getProducts().subscribe(
             data=>{
+                // console.log("products", data);
                 this.products=data;
                 this.categories=data.map(p=>p.category)
             }
         );
     }
 
-    getProducts(category:string=null):Product[]{
-        return this.products.filter(p=>p.category==category)
+    getProducts():Product[]{
+        return this.products
     }
 
     getProduct(id:number):Product{
