@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductRepository } from '../models/product.repository';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-side-bar.component.css']
 })
 export class LeftSideBarComponent implements OnInit {
+  // categories:string[]=[];
+  constructor(private dataRepo:ProductRepository) { }
 
-  constructor() { }
+  get itemCate():string[]{
+    // console.log(this.dataRepo.getCategories());
+    const allCat=this.dataRepo.getCategories();
 
+    return [...new Set(allCat)]; // the set object creates a new array with unique elements
+  }
   ngOnInit() {
   }
 

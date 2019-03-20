@@ -1,13 +1,12 @@
-<div class="row">
-  <div class="col-xs-12">
-    {{allTeas.length}} Teas
-  </div>
-
-  <div *ngIf="allTeas.length">
-    <div *ngFor="let tea of allTeas">
-      <ul class="list-group" *ngFor="let detail of tea | keyvalue">
-        <li class="list-item">{{detail.key}}: {{detail.value}}</li>
-      </ul>
+<div>
+  <div *ngIf="allTeas.length" class="card-columns">
+    <div *ngFor="let tea of allTeas" class="card" style="width:20em">
+      <img class="card-img-top img-responsive" [src]="tea.imageUrl" alt="card image cap" style="max-height:300px">
+      <div class="card-body">
+        <ul class="list-group list-group-flush" *ngFor="let detail of tea | keyvalue">
+          <li class="list-group-item" *ngIf="detail.key!=='imageUrl'">{{detail.key}}: {{detail.value}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
