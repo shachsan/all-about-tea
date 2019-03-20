@@ -12,7 +12,8 @@ export class ProductRepository{
             data=>{
                 // console.log("products", data);
                 this.products=data;
-                this.categories=data.map(p=>p.category)
+                this.categories=data.map(p=>p.category);
+                this.brands=data.map(p=>p.brand)
             }
         );
     }
