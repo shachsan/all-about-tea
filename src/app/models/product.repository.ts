@@ -22,7 +22,7 @@ export class ProductRepository{
     }
 
     setProducts(cat?:string){
-        if(cat===undefined || cat==='all'){
+        if(cat===undefined || cat===''){
             console.log('inside undefined');
             this.productsCopy=[...this.products];
         }else{

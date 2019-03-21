@@ -7,7 +7,9 @@ import { ProductRepository } from '../models/product.repository';
   styleUrls: ['./left-side-bar.component.css']
 })
 export class LeftSideBarComponent implements OnInit {
-  // categories:string[]=[];
+
+  selectedCat='';
+  addTeaClicked=false;
   constructor(private dataRepo:ProductRepository) { }
 
   get itemCate():string[]{
@@ -19,6 +21,11 @@ export class LeftSideBarComponent implements OnInit {
 
   changeCat(cat:string){
     this.dataRepo.setProducts(cat);
+    this.selectedCat=cat;
+  }
+
+  addProductHandler(){
+    this.addTeaClicked=!this.addTeaClicked;
   }
 
 

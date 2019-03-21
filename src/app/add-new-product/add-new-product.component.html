@@ -1,0 +1,48 @@
+<form [formGroup]="addNewProductForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="sr-only">Name</label>
+      <input class="form-control" type="text" placeholder="Tea Name"
+            id="name" formControlName="name"
+      >
+    </div>
+    <div class="form-group">
+      <label for="desc" class="sr-only">Description</label>
+      <textarea class="form-control" rows="3" placeholder="Description"
+                id="desc" formControlName="desc"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="Category " class="sr-only">Category</label>
+      <input class="form-control" type="text" placeholder="Category"
+            id="cat" formControlName="category"> <!-- this should be select box-->
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="sr-only">Retail</label>
+        <input name="price" class="form-control" type="text" placeholder="Retail Price"
+              id="price" formControlName="price">
+    </div>
+
+    <div class="form-group">
+        <label for="brand" class="sr-only">Brand</label>
+        <input class="form-control" type="text" placeholder="Brand"
+              id="brand" formControlName="brand">
+    </div>
+
+    <div class="form-group">
+        <label for="size" class="sr-only">Size</label>
+        <input name="size" class="form-control" type="text" placeholder="Size"
+              id="size" formControlName="size">
+        <input name="sizeCheck" class="form-control" type="checkbox"><label for="sizeCheck">oz</label> <!-- make it select box-->
+    </div>
+    <div class="form-group">
+        <label for="image" class="sr-only">Image Path</label>
+        <input class="form-control" type="text" placeholder="Image Path"
+              id="imagePath" formControlName="imagePath">
+
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="Submit">
+    </div>
+
+  </form>

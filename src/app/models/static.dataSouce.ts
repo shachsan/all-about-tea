@@ -26,4 +26,8 @@ export class StaticDataSource implements OnInit{
     getProducts():Observable<Product[]>{
         return from([this.products]);
     }
+
+    addProduct(product:Product){
+        this.products.push(product);
+    }
 };

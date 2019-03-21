@@ -11,6 +11,8 @@ import { ShopComponent } from './shop/shop.component';
 import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
 import { ProductRepository } from './models/product.repository';
 import { StaticDataSource } from './models/static.dataSouce';
+import { AddNewProductComponent } from './add-new-product/add-new-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { StaticDataSource } from './models/static.dataSouce';
     FooterComponent,
     HomeComponent,
     ShopComponent,
-    LeftSideBarComponent
+    LeftSideBarComponent,
+    AddNewProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [ProductRepository, StaticDataSource],
   bootstrap: [AppComponent]

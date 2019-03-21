@@ -1,4 +1,14 @@
-<div (click)="changeCat(all)">All Categories</div>
-<div *ngFor="let cat of itemCate" (click)="changeCat(cat)">
-  {{cat}}
+<div class="list-group">
+  <h4>Our Tea Category</h4>
+  <div (click)="changeCat('')"><a href="#" class="list-group-item btn btn-outline-primary" [class.active]="selectedCat==''">All Categories</a></div>
+  <div *ngFor="let cat of itemCate" (click)="changeCat(cat)">
+    <a href="#" class="btn btn-outline-primary list-group-item" [class.active]="cat==selectedCat">{{cat}}</a>
+  </div>
 </div>
+<br/>
+<hr/>
+<div (click)="addProductHandler()"><a href="#" class="list-group-item btn btn-outline-primary">Add New Tea</a></div>
+<div *ngIf="addTeaClicked">
+  <app-add-new-product></app-add-new-product>
+</div>
+
