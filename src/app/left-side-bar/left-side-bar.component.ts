@@ -16,6 +16,12 @@ export class LeftSideBarComponent implements OnInit {
 
     return [...new Set(allCat)]; // the set object creates a new array with unique elements
   }
+
+  changeCat(cat:string){
+    this.dataRepo.setProducts(cat);
+  }
+
+
   ngOnInit() {
   }
 

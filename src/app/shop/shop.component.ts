@@ -9,9 +9,10 @@ import { ProductRepository } from '../models/product.repository';
 })
 export class ShopComponent implements OnInit {
   // allTeas: Product[]=[]
+  selectedCat=[];
   constructor(private repository:ProductRepository) { }
 
-  get allTeas():Product[]{
+  get teas():Product[]{
     return this.repository.getProducts();
   }
 
@@ -21,6 +22,10 @@ export class ShopComponent implements OnInit {
 
   get brands():string[]{
     return this.repository.getBrands();
+  }
+
+  getCatProducts(cat):Product[]{
+    this.selectedCat=this.repository.getCategoryProducts(cat);
   }
 
   ngOnInit() {

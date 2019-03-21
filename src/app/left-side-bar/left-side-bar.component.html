@@ -1,3 +1,4 @@
-<div *ngFor="let cat of itemCate">
+<div (click)="changeCat(all)">All Categories</div>
+<div *ngFor="let cat of itemCate" (click)="changeCat(cat)">
   {{cat}}
 </div>
