@@ -24,9 +24,9 @@ export class ShopComponent implements OnInit {
     return this.repository.getBrands();
   }
 
-  getCatProducts(cat):Product[]{
-    this.selectedCat=this.repository.getCategoryProducts(cat);
-  }
+  // getCatProducts(cat):Product[]{
+  //   this.selectedCat=this.repository.getCategoryProducts(cat);
+  // }
 
   ngOnInit() {
   }

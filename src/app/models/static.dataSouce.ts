@@ -18,9 +18,7 @@ export class StaticDataSource implements OnInit{
     ];
 
     ngOnInit(){
-        // const productsObs=new Observable((observer)=>{
-            
-        // })
+       
     }
 
     getProducts():Observable<Product[]>{
@@ -28,6 +26,7 @@ export class StaticDataSource implements OnInit{
     }
 
     addProduct(product:Product){
+        console.log(this.products);
         this.products.push(product);
     }
 };

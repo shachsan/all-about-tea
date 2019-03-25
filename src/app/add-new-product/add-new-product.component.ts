@@ -18,14 +18,14 @@ export class AddNewProductComponent implements OnInit {
   ngOnInit() {
     this.addNewProductForm=new FormGroup({
       'name':new FormControl(null),
-      'desc':new FormControl(null),
+      'description':new FormControl(null),
       'category':new FormControl(null),
       'price':new FormControl(null),
       'priceType':new FormControl(null),
       'brand':new FormControl(null),
       'size':new FormControl(null),
       'sizeUnit':new FormControl(null),
-      'imagePath':new FormControl(null),
+      'imageUrl':new FormControl(null),
     })
   }
 
