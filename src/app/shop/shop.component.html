@@ -28,7 +28,8 @@
   </div>
 
   <div class="btn-group">
-    <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers">{{page}}</button>
+    <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers"
+    (clicK)="setPageNum(page)">{{page}}</button>
   </div>
 
 </div>

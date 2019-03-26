@@ -9,25 +9,34 @@ import { ProductRepository } from '../models/product.repository';
 })
 export class ShopComponent implements OnInit {
   // allTeas: Product[]=[]
-  selectedCat=[];
-  itemsPerPage:Number=2;
+  // selectedCatProducts=[];
+  itemsPerPage:number=3;
+
   // pageNumbers:Number=null;
   constructor(private repository:ProductRepository) { }
 
-  changePerPageView(number:Number){
+  changePerPageView(number:number){
     this.itemsPerPage=number;
   }
 
   
   get teas():Product[]{
     return this.repository.getProducts();
+    // return this.selectedCatProducts;
   }
 
 
-  get pageNumbers():Number{
+  get pageNumbers():number{
     let itemscount=this.repository.getProducts().length;
     // console.log(itemscount);
     return Array(Math.ceil(itemscount/this.itemsPerPage)).fill().map((x, i)=>i+1);
+  }
+
+  setPageNum(pageNum:number){
+    console.log(pageNum);
+    
+
+    this.selectedCatProducts=this.selectedCatProducts.slice(pageNum, this.itemsPerPage);
   }
 
   get categories():string[]{
@@ -38,11 +47,15 @@ export class ShopComponent implements OnInit {
     return this.repository.getBrands();
   }
 
+
+
   // getCatProducts(cat):Product[]{
   //   this.selectedCat=this.repository.getCategoryProducts(cat);
   // }
 
   ngOnInit() {
+    console.log('run shop onInit')
+    // this.selectedCatProducts=this.repository.getProducts();
   }
 
 }
