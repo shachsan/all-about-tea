@@ -48,4 +48,9 @@ export class ProductRepository{
     getBrands():string[]{
         return this.brands;
     }
+
+
+    addProduct(product:Product){
+        this.dataSource.addProduct(product);
+    }
 }

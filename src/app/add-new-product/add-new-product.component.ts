@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
-import { StaticDataSource } from '../models/static.dataSouce';
-import { Product } from '../models/product.model';
+import { ProductRepository } from '../models/product.repository';
 
 @Component({
   selector: 'app-add-new-product',
@@ -13,7 +12,7 @@ export class AddNewProductComponent implements OnInit {
   addNewProductForm:FormGroup;
   // newProduct:Product={};
 
-  constructor(private dataSource:StaticDataSource){ }
+  constructor(private dataRepo:ProductRepository) { }
 
   ngOnInit() {
     this.addNewProductForm=new FormGroup({
@@ -31,9 +30,7 @@ export class AddNewProductComponent implements OnInit {
 
   onSubmit(){
     console.log('form data', this.addNewProductForm.value);
-    
-    this.dataSource.addProduct(this.addNewProductForm.value);
-    // this.newProduct={};
+    this.dataRepo.addProduct(this.addNewProductForm.value);
   }
 
 }
