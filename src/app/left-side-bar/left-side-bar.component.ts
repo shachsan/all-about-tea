@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ProductRepository } from '../models/product.repository';
 
 @Component({
@@ -10,6 +10,8 @@ export class LeftSideBarComponent implements OnInit {
 
   selectedCat='';
   addTeaClicked=false;
+  // @Output() emitCat=new EventEmitter<any>();
+
   constructor(private dataRepo:ProductRepository) { }
 
   get itemCate():string[]{
@@ -18,6 +20,10 @@ export class LeftSideBarComponent implements OnInit {
 
     return [...new Set(allCat)]; // the set object creates a new array with unique elements
   }
+
+  // emitCategory(itemCate:string[]){
+  //   this.emitCat.emit(itemCate)
+  // }
 
   changeCat(cat:string){
     this.dataRepo.setProducts(cat);

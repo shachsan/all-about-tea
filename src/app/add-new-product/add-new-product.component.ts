@@ -10,6 +10,7 @@ import { ProductRepository } from '../models/product.repository';
 export class AddNewProductComponent implements OnInit {
 
   addNewProductForm:FormGroup;
+  itemCat:string[];
   // newProduct:Product={};
 
   constructor(private dataRepo:ProductRepository) { }
@@ -25,12 +26,22 @@ export class AddNewProductComponent implements OnInit {
       'size':new FormControl(null),
       'sizeUnit':new FormControl(null),
       'imageUrl':new FormControl(null),
-    })
+    });
+    // this.itemCat=emitCategory
   }
 
   onSubmit(){
     console.log('form data', this.addNewProductForm.value);
     this.dataRepo.addProduct(this.addNewProductForm.value);
+  }
+
+  //below same method is defined in <left-side-bar> component(parent component, need to learn how to pass
+  //parent method to child component)
+  get itemCate():string[]{
+    // console.log(this.dataRepo.getCategories());
+    const allCat=this.dataRepo.getCategories();
+
+    return [...new Set(allCat)]; // the set object creates a new array with unique elements
   }
 
 }

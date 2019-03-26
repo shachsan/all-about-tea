@@ -14,6 +14,8 @@
       <label for="Category " class="sr-only">Category</label>
       <select class="form-control"
             id="cat" formControlName="category">
+            <option *ngFor="let cate of itemCate">{{cate}}</option>
+            
       </select> 
 
       <!-- <input class="form-control" type="text" placeholder="Tea category"
