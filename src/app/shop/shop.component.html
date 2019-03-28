@@ -20,7 +20,7 @@
 
   <div class="form-inline">
     <select name="itemsperpage" class="form-control" [value]="itemsPerPage" (change)="changePerPageView($event.target.value)">
-      <option value=null>Show items per page</option>
+      <!-- <option value=null>Show items per page</option> -->
       <option value='1'>1 per page</option>
       <option value='2'>2 per page</option>
       <option value='3'>3 per page</option>
@@ -29,7 +29,7 @@
 
   <div class="btn-group">
     <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers"
-    (clicK)="setPageNum(page)">{{page}}</button>
+    (click)="setPageNum(page)">{{page}}</button>
   </div>
 
 </div>

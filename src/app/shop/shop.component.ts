@@ -10,33 +10,48 @@ import { ProductRepository } from '../models/product.repository';
 export class ShopComponent implements OnInit {
   // allTeas: Product[]=[]
   // selectedCatProducts=[];
+  // selectedCatProductsCopy=[];
   itemsPerPage:number=3;
+  pageIndex:number=0;
+  // totalItems:number;
 
   // pageNumbers:Number=null;
-  constructor(private repository:ProductRepository) { }
+  constructor(private repository:ProductRepository) {
+    // this.totalItems=repository.getItemsCount();
+   }
 
   changePerPageView(number:number){
-    this.itemsPerPage=number;
+    console.log('triggered changerPerPageView');
+    this.itemsPerPage=+number;
+    this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
+    // this.teas.slice(this.pageIndex, this.itemsPerPage);
   }
-
   
-  get teas():Product[]{
-    return this.repository.getProducts();
-    // return this.selectedCatProducts;
-  }
-
-
-  get pageNumbers():number{
-    let itemscount=this.repository.getProducts().length;
-    // console.log(itemscount);
-    return Array(Math.ceil(itemscount/this.itemsPerPage)).fill().map((x, i)=>i+1);
-  }
-
-  setPageNum(pageNum:number){
-    console.log(pageNum);
+  // get itemsCounts():number{
+    //   return this.totalItems=this.repository.getItemsCount();
+    // }
     
-
-    this.selectedCatProducts=this.selectedCatProducts.slice(pageNum, this.itemsPerPage);
+    
+    get teas():Product[]{
+      return this.repository.getProducts();
+    }
+    
+    get itemsCount():number{
+      return this.repository.getItemsCount();
+    }
+    
+    
+    get pageNumbers():number{
+      // let itemscount=this.teas.length;
+      // console.log('items count:',this.itemsCount, "items per page:", this.itemsPerPage);
+      return Array(Math.ceil(this.itemsCount/this.itemsPerPage)).fill().map((x, i)=>i+1);
+    }
+    
+    setPageNum(pageNum:number){
+      console.log('PageNum', pageNum);
+      this.pageIndex=pageNum;
+      this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
+    // this.selectedCatProducts=this.selectedCatProducts.slice(pageNum, this.itemsPerPage);
   }
 
   get categories():string[]{
@@ -54,8 +69,9 @@ export class ShopComponent implements OnInit {
   // }
 
   ngOnInit() {
-    console.log('run shop onInit')
+    // console.log('run shop onInit')
     // this.selectedCatProducts=this.repository.getProducts();
+    // this.selectedCatProductsCopy=this.selectedCatProducts;
   }
 
 }
