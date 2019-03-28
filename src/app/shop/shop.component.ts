@@ -9,7 +9,12 @@ import { ProductRepository } from '../models/product.repository';
 })
 export class ShopComponent implements OnInit {
   itemsPerPage:number;
-  selectedPage:number;
+  totalPages:number[]=[];
+  beginPageIndex:number=0;
+  pageBtnsToDisplay:number=3;
+  // lastPageIndex:number=this.lastPgIdx();
+  // this.beginPageIndex+this.pageBtnsToDisplay;
+  // selectedPage:number;
   constructor(private repository:ProductRepository) {}
 
   changePerPageView(number:number){
@@ -29,17 +34,53 @@ export class ShopComponent implements OnInit {
     }
     
     
-    get pageNumbers():number{
-      return Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
+    get pageNumbers():number[]{
+      this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
+      // console.log('begin page index', this.beginPageIndex);
+      // console.log('total pages', this.totalPages);
+      return this.totalPages.slice(this.beginPageIndex,this.lastPageIndex);
+    }
+    getNextPageItems(){
+      console.log('get next page items');
+      this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
+      this.repository.setItemsPerPage();
+    }
+
+    showNextPageBtn(){
+      console.log('selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
+      
+      if(this.repository.selectedPage===this.lastPageIndex){
+        
+        this.beginPageIndex++;
+        this.repository.selectedPage++;
+        this.getNextPageItems();
+        // this.updateLastPageIndex(this.beginPageIndex);
+      }else{
+        this.repository.selectedPage++;
+        this.getNextPageItems();
+      }
+      // console.log('begin page index', this.beginPageIndex);
+    }
+
+    get lastPageIndex():number{
+      // console.log('inside lastPgIdx');
+      return this.beginPageIndex+this.pageBtnsToDisplay;
+    }
+    // updateLastPageIndex(beginIdx:number){
+    //   this.lastPageIndex=
+    // }
+
+    get selectedPage():number{
+      return this.repository.selectedPage;
     }
     
     setPageNum(pageNum:number){
       console.log('PageNum', pageNum);
       this.repository.selectedPage=pageNum;
-      this.selectedPage=pageNum;
-      this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
-      this.repository.setItemsPerPage();
-  }
+      this.getNextPageItems();
+      // this.selectedPage=pageNum;
+    }
+    
 
   get categories():string[]{
     return this.repository.getCategories();
@@ -51,7 +92,7 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.itemsPerPage=this.repository.itemsPerPage;
-    this.selectedPage=this.repository.selectedPage;
+    // this.selectedPage=this.repository.selectedPage;
   }
 
 }

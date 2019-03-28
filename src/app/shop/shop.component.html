@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="form-inline">
+  <div class="form-inline float-sm-left mr-1">
     <select name="itemsperpage" class="form-control" [value]="itemsPerPage" (change)="changePerPageView($event.target.value)">
       <!-- <option value=null>Show items per page</option> -->
       <option value='1'>1 per page</option>
@@ -27,9 +27,11 @@
     </select>
   </div>
 
-  <div class="btn-group">
+  <div class="btn-group float-sm-right">
+    <button class="btn btn-outline-primary"><i style="font-size:20px" class="fa">&#xf137;</i></button>
     <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers"
     (click)="setPageNum(page)" [class.active]="page==selectedPage">{{page}}</button>
+    <button class="btn btn-outline-primary" (click)="showNextPageBtn()"><i style="font-size:20px" class="fa">&#xf138;</i></button>
   </div>
 
 </div>
