@@ -7,6 +7,9 @@ export class ProductRepository{
     private products:Product[]=[];
     private selectCatItems:Product[]=[];
     private renderItems:Product[]=[];
+    public pageIndex:number=0;
+    public itemsPerPage:number=3;
+    public selectedPage:number=1;
     private currentSelectCat:string='';
     private categories:string[]=[];
     private brands:string[]=[];
@@ -17,7 +20,8 @@ export class ProductRepository{
                 // console.log("products", data);
                 this.products=data;
                 this.selectCatItems=data;
-                this.renderItems=data;
+                this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
+                // this.renderItems=data;
                 this.categories=data.map(p=>p.category);
                 this.brands=data.map(p=>p.brand)
             }
@@ -27,23 +31,30 @@ export class ProductRepository{
     setProducts(cat?:string){
         if(cat===undefined || cat===''){
             console.log('inside undefined');
+            this.pageIndex=0;
+            this.selectedPage=1;
             this.selectCatItems=[...this.products];
-            this.renderItems=this.selectCatItems;
+            // this.renderItems=this.selectCatItems;
+            this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
             this.currentSelectCat=cat;
         }else{
             console.log('inside else');
             this.currentSelectCat=cat;
+            this.pageIndex=0;
+            this.selectedPage=1;
             this.selectCatItems=this.products.filter(p=>p.category===cat);
-            this.renderItems=this.selectCatItems;
+            this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
         }
     }
 
-    setItemsPerPage(pageIndex:number, itemsPerPage:number){
-        console.log('pindex',pageIndex, 'itemperpage', itemsPerPage);
-        console.log('selectcatitems', this.selectCatItems);
+    setItemsPerPage(){
+        // console.log('pindex',pageIndex, 'itemperpage', itemsPerPage);
+        // console.log('selectcatitems', this.selectCatItems);
         // let items=this.products.filter(p=>p.category===cat)
-        this.renderItems=this.selectCatItems.slice(pageIndex, pageIndex+itemsPerPage);
-        console.log('render Items', this.renderItems);
+        // this.pageIndex=pageIndex;
+        // this.itemsPerPage=itemsPerPage;
+        this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
+        // console.log('render Items', this.renderItems);
     }
 
     getItemsCount():number{

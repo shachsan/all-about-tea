@@ -11,9 +11,9 @@ export class ShopComponent implements OnInit {
   // allTeas: Product[]=[]
   // selectedCatProducts=[];
   // selectedCatProductsCopy=[];
-  itemsPerPage:number=3;
-  pageIndex:number=0;
-  selectPage:number=1;
+  itemsPerPage:number;
+  // pageIndex:number=0;
+  selectedPage:number;
   // totalItems:number;
 
   // pageNumbers:Number=null;
@@ -23,9 +23,11 @@ export class ShopComponent implements OnInit {
 
   changePerPageView(number:number){
     console.log('triggered changerPerPageView');
-    this.itemsPerPage=+number;
-    this.pageIndex=0;
-    this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
+    this.repository.itemsPerPage=+number;
+    this.repository.pageIndex=0;
+    this.repository.selectedPage=1;
+    this.repository.setItemsPerPage();
+    // this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
     // this.teas.slice(this.pageIndex, this.itemsPerPage);
   }
   
@@ -46,14 +48,17 @@ export class ShopComponent implements OnInit {
     get pageNumbers():number{
       // let itemscount=this.teas.length;
       // console.log('items count:',this.itemsCount, "items per page:", this.itemsPerPage);
-      return Array(Math.ceil(this.itemsCount/this.itemsPerPage)).fill().map((x, i)=>i+1);
+      return Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
     }
     
     setPageNum(pageNum:number){
       console.log('PageNum', pageNum);
-      this.selectPage=pageNum;
-      this.pageIndex=(this.selectPage-1)*this.itemsPerPage;
-      this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
+      // this.selectedPage=pageNum;
+      this.repository.selectedPage=pageNum;
+      this.selectedPage=pageNum;
+      // console.log('selectedPage', this.repository.selectedPage);
+      this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
+      this.repository.setItemsPerPage();
     // this.selectedCatProducts=this.selectedCatProducts.slice(pageNum, this.itemsPerPage);
   }
 
@@ -72,6 +77,8 @@ export class ShopComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.itemsPerPage=this.repository.itemsPerPage;
+    this.selectedPage=this.repository.selectedPage;
     // console.log('run shop onInit')
     // this.selectedCatProducts=this.repository.getProducts();
     // this.selectedCatProductsCopy=this.selectedCatProducts;
