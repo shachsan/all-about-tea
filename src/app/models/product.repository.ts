@@ -13,15 +13,12 @@ export class ProductRepository{
     private currentSelectCat:string='';
     private categories:string[]=[];
     private brands:string[]=[];
-    // private categoryProducts:Product[]=[];
     constructor(private dataSource:StaticDataSource){
         dataSource.getProducts().subscribe(
             data=>{
-                // console.log("products", data);
                 this.products=data;
                 this.selectCatItems=data;
                 this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
-                // this.renderItems=data;
                 this.categories=data.map(p=>p.category);
                 this.brands=data.map(p=>p.brand)
             }
@@ -34,7 +31,6 @@ export class ProductRepository{
             this.pageIndex=0;
             this.selectedPage=1;
             this.selectCatItems=[...this.products];
-            // this.renderItems=this.selectCatItems;
             this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
             this.currentSelectCat=cat;
         }else{
@@ -48,13 +44,7 @@ export class ProductRepository{
     }
 
     setItemsPerPage(){
-        // console.log('pindex',pageIndex, 'itemperpage', itemsPerPage);
-        // console.log('selectcatitems', this.selectCatItems);
-        // let items=this.products.filter(p=>p.category===cat)
-        // this.pageIndex=pageIndex;
-        // this.itemsPerPage=itemsPerPage;
         this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
-        // console.log('render Items', this.renderItems);
     }
 
     getItemsCount():number{
@@ -65,9 +55,6 @@ export class ProductRepository{
         return this.renderItems;
         
     }
-
-    // showPageitems()
-
 
     getProduct(id:number):Product{
         return this.products.find(p=>p.id==id);
