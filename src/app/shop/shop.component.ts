@@ -24,6 +24,7 @@ export class ShopComponent implements OnInit {
   changePerPageView(number:number){
     console.log('triggered changerPerPageView');
     this.itemsPerPage=+number;
+    this.pageIndex=0;
     this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
     // this.teas.slice(this.pageIndex, this.itemsPerPage);
   }
