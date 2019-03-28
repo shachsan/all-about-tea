@@ -39,9 +39,11 @@ export class ProductRepository{
     }
 
     setItemsPerPage(pageIndex:number, itemsPerPage:number){
-        // console.log(pageIndex, itemsPerPage);
+        console.log('pindex',pageIndex, 'itemperpage', itemsPerPage);
+        console.log('selectcatitems', this.selectCatItems);
         // let items=this.products.filter(p=>p.category===cat)
-        this.renderItems=this.selectCatItems.slice(pageIndex, itemsPerPage);
+        this.renderItems=this.selectCatItems.slice(pageIndex, pageIndex+itemsPerPage);
+        console.log('render Items', this.renderItems);
     }
 
     getItemsCount():number{

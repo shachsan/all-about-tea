@@ -13,6 +13,7 @@ export class ShopComponent implements OnInit {
   // selectedCatProductsCopy=[];
   itemsPerPage:number=3;
   pageIndex:number=0;
+  selectPage:number=1;
   // totalItems:number;
 
   // pageNumbers:Number=null;
@@ -49,7 +50,8 @@ export class ShopComponent implements OnInit {
     
     setPageNum(pageNum:number){
       console.log('PageNum', pageNum);
-      this.pageIndex=pageNum;
+      this.selectPage=pageNum;
+      this.pageIndex=(this.selectPage-1)*this.itemsPerPage;
       this.repository.setItemsPerPage(this.pageIndex, this.itemsPerPage)
     // this.selectedCatProducts=this.selectedCatProducts.slice(pageNum, this.itemsPerPage);
   }
