@@ -28,7 +28,7 @@
   </div>
 
   <div class="btn-group float-sm-right">
-    <button class="btn btn-outline-primary"><i style="font-size:20px" class="fa">&#xf137;</i></button>
+    <button class="btn btn-outline-primary" (click)="showPreviousPageBtn()"><i style="font-size:20px" class="fa">&#xf137;</i></button>
     <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers"
     (click)="setPageNum(page)" [class.active]="page==selectedPage">{{page}}</button>
     <button class="btn btn-outline-primary" (click)="showNextPageBtn()"><i style="font-size:20px" class="fa">&#xf138;</i></button>

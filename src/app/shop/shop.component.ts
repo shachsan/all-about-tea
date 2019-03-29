@@ -38,16 +38,35 @@ export class ShopComponent implements OnInit {
       this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
       // console.log('begin page index', this.beginPageIndex);
       // console.log('total pages', this.totalPages);
-      return this.totalPages.slice(this.beginPageIndex,this.lastPageIndex);
+      return this.totalPages.slice(this.beginPgIdx,this.lastPageIndex);
     }
+
     getNextPageItems(){
       console.log('get next page items');
       this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
       this.repository.setItemsPerPage();
     }
 
+
+    showPreviousPageBtn(){
+    
+      console.log('begin index', this.beginPgIdx, 'selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
+      if(this.repository.selectedPage-1===this.beginPageIndex){
+        
+        this.beginPageIndex--;
+        this.repository.selectedPage--;
+        this.getNextPageItems();
+        // this.updateLastPageIndex(this.beginPageIndex);
+      }else{
+        this.repository.selectedPage--;
+        this.getNextPageItems();
+      }
+      // console.log('begin page index', this.beginPageIndex);
+      
+    }
+    
     showNextPageBtn(){
-      console.log('selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
+      console.log('begin index', this.beginPgIdx, 'selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
       
       if(this.repository.selectedPage===this.lastPageIndex){
         
@@ -65,6 +84,10 @@ export class ShopComponent implements OnInit {
     get lastPageIndex():number{
       // console.log('inside lastPgIdx');
       return this.beginPageIndex+this.pageBtnsToDisplay;
+    }
+
+    get beginPgIdx():number{
+      return this.beginPageIndex;
     }
     // updateLastPageIndex(beginIdx:number){
     //   this.lastPageIndex=
