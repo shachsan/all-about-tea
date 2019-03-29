@@ -66,7 +66,7 @@ export class ShopComponent implements OnInit {
     }
     
     showNextPageBtn(){
-      console.log('begin index', this.beginPgIdx, 'selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
+      console.log('total page', this.totalPages.length, 'last page index', this.lastPageIndex);
       
       if(this.repository.selectedPage===this.lastPageIndex){
         
@@ -81,10 +81,19 @@ export class ShopComponent implements OnInit {
       // console.log('begin page index', this.beginPageIndex);
     }
 
+    ifLastPage():boolean{
+      return this.lastPageIndex===this.totalPages.length;
+    }
+
+    ifFirstPage():boolean{
+      return this.beginPgIdx===0;
+    }
+
     get lastPageIndex():number{
       // console.log('inside lastPgIdx');
       return this.beginPageIndex+this.pageBtnsToDisplay;
     }
+
 
     get beginPgIdx():number{
       return this.beginPageIndex;
