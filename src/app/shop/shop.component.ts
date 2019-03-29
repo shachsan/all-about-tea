@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from '../models/product.repository';
 
@@ -7,113 +7,63 @@ import { ProductRepository } from '../models/product.repository';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit{
   itemsPerPage:number;
   totalPages:number[]=[];
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
-  // lastPageIndex:number=this.lastPgIdx();
-  // this.beginPageIndex+this.pageBtnsToDisplay;
-  // selectedPage:number;
+
   constructor(private repository:ProductRepository) {}
 
   changePerPageView(number:number){
     console.log('triggered changerPerPageView');
+    // if(this.totalPages.length<this.pageBtnsToDisplay){
+    //   this.pageBtnsToDisplay=this.totalPages.length;
+    // }
     this.repository.itemsPerPage=+number;
     this.repository.pageIndex=0;
     this.repository.selectedPage=1;
     this.repository.setItemsPerPage();
   }
-    
-    get teas():Product[]{
-      return this.repository.getProducts();
-    }
-    
-    get itemsCount():number{
-      return this.repository.getItemsCount();
-    }
-    
-    
-    get pageNumbers():number[]{
-      this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
-      // console.log('begin page index', this.beginPageIndex);
-      // console.log('total pages', this.totalPages);
-      return this.totalPages.slice(this.beginPgIdx,this.lastPageIndex);
-    }
-
-    getNextPageItems(){
-      console.log('get next page items');
-      this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
-      this.repository.setItemsPerPage();
-    }
-
-
-    showPreviousPageBtn(){
-    
-      console.log('begin index', this.beginPgIdx, 'selected page', this.repository.selectedPage, 'last page index', this.lastPageIndex);
-      if(this.repository.selectedPage-1===this.beginPageIndex){
-        
-        this.beginPageIndex--;
-        this.repository.selectedPage--;
-        this.getNextPageItems();
-        // this.updateLastPageIndex(this.beginPageIndex);
-      }else{
-        this.repository.selectedPage--;
-        this.getNextPageItems();
-      }
-      // console.log('begin page index', this.beginPageIndex);
-      
-    }
-    
-    showNextPageBtn(){
-      console.log('total page', this.totalPages.length, 'last page index', this.lastPageIndex);
-      
-      if(this.repository.selectedPage===this.lastPageIndex){
-        
-        this.beginPageIndex++;
-        this.repository.selectedPage++;
-        this.getNextPageItems();
-        // this.updateLastPageIndex(this.beginPageIndex);
-      }else{
-        this.repository.selectedPage++;
-        this.getNextPageItems();
-      }
-      // console.log('begin page index', this.beginPageIndex);
-    }
-
-    ifLastPage():boolean{
-      return this.lastPageIndex===this.totalPages.length;
-    }
-
-    ifFirstPage():boolean{
-      return this.beginPgIdx===0;
-    }
-
-    get lastPageIndex():number{
-      // console.log('inside lastPgIdx');
+  
+  get teas():Product[]{
+    return this.repository.getProducts();
+  }
+  
+  get itemsCount():number{
+    return this.repository.getItemsCount();
+  }
+  
+  
+  get pageNumbers():number[]{
+    this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
+    console.log('begin indx', this.beginPgIdx, 'last page idx', this.lastPageIndex);
+    console.log('total pages', this.totalPages.slice(this.beginPgIdx,this.lastPageIndex));
+    return this.totalPages.slice(this.beginPgIdx,this.lastPageIndex);
+  }
+  
+  get lastPageIndex():number{
+    console.log('total length', this.totalPages.length);
+    if(this.totalPages.length<=this.pageBtnsToDisplay){
+      return this.beginPageIndex+this.totalPages.length;
+    }else{
       return this.beginPageIndex+this.pageBtnsToDisplay;
     }
+  }
 
-
-    get beginPgIdx():number{
+  
+  get beginPgIdx():number{
+    if(this.repository.selectedPage===1){
+      return this.beginPageIndex=0;
+    }else{
       return this.beginPageIndex;
     }
-    // updateLastPageIndex(beginIdx:number){
-    //   this.lastPageIndex=
-    // }
-
-    get selectedPage():number{
-      return this.repository.selectedPage;
-    }
-    
-    setPageNum(pageNum:number){
-      console.log('PageNum', pageNum);
-      this.repository.selectedPage=pageNum;
-      this.getNextPageItems();
-      // this.selectedPage=pageNum;
-    }
-    
-
+  }
+  
+  get selectedPage():number{
+    return this.repository.selectedPage;
+  }
+  
   get categories():string[]{
     return this.repository.getCategories();
   }
@@ -122,9 +72,56 @@ export class ShopComponent implements OnInit {
     return this.repository.getBrands();
   }
 
-  ngOnInit() {
-    this.itemsPerPage=this.repository.itemsPerPage;
-    // this.selectedPage=this.repository.selectedPage;
+  getNextPageItems(){
+    console.log('get next page items');
+    this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
+    this.repository.setItemsPerPage();
   }
+
+
+  showPreviousPageBtn(){
+    if(this.repository.selectedPage-1===this.beginPageIndex){
+      this.beginPageIndex--;
+      this.repository.selectedPage--;
+      this.getNextPageItems();
+    }else{
+      this.repository.selectedPage--;
+      this.getNextPageItems();
+    }
+    
+  }
+  
+  showNextPageBtn(){
+    if(this.repository.selectedPage===this.lastPageIndex){
+      this.beginPageIndex++;
+      this.repository.selectedPage++;
+      this.getNextPageItems();
+    }else{
+      this.repository.selectedPage++;
+      this.getNextPageItems();
+    }
+  }
+
+  get ifLastPage():boolean{
+    return this.lastPageIndex===this.totalPages.length;
+  }
+
+  ifFirstPage():boolean{
+    return this.beginPgIdx===0;
+  }
+
+    
+  setPageNum(pageNum:number){
+    console.log('PageNum', pageNum);
+    this.repository.selectedPage=pageNum;
+    this.getNextPageItems();
+  }
+
+  
+  ngOnInit() {
+    console.log('onInit');
+    this.itemsPerPage=this.repository.itemsPerPage;
+  }
+
 
 }

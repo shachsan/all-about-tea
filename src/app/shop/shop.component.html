@@ -35,7 +35,7 @@
     <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers"
     (click)="setPageNum(page)" [class.active]="page==selectedPage">{{page}}</button>
     <button class="btn btn-outline-primary" (click)="showNextPageBtn()"
-            [disabled]="ifLastPage()">
+            [disabled]="ifLastPage">
       <i style="font-size:20px" class="fa">&#xf138;</i>
     </button>
   </div>

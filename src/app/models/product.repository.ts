@@ -40,6 +40,7 @@ export class ProductRepository{
             this.selectedPage=1;
             this.selectCatItems=this.products.filter(p=>p.category===cat);
             this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
+            
         }
     }
 
