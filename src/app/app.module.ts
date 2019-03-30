@@ -13,6 +13,7 @@ import { ProductRepository } from './models/product.repository';
 import { StaticDataSource } from './models/static.dataSouce';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Cart } from './models/Cart/cart.model';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [ProductRepository, StaticDataSource],
+  providers: [ProductRepository, StaticDataSource, Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

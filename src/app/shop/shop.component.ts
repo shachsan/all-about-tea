@@ -116,11 +116,11 @@ export class ShopComponent implements OnInit{
     this.getNextPageItems();
   }
 
-  reduceQty(){
+  reduceQty(e:Event){
     this.qty--;
   }
 
-  increaseQty(){
+  increaseQty(e:Event){
     this.qty++;
   }
 

@@ -11,9 +11,9 @@
           <div class="text-center">
             <div class="d-inline mr-1"><h5>Qty</h5></div>
             <div class="btn-group">
-              <button class="d-inline qty-btn" (click)="reduceQty()">-</button>
+              <button class="d-inline qty-btn" (click)="reduceQty($event)">-</button>
               <div><input class="qty text-center" type="text" name="qty" id="qty" [value]="qty"></div>
-              <button class="qty-btn" (click)="increaseQty()">+</button>
+              <button class="qty-btn" (click)="increaseQty($event)">+</button>
             </div>
          
 
