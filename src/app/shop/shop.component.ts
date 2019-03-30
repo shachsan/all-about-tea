@@ -13,6 +13,7 @@ export class ShopComponent implements OnInit{
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
   qty:number=1;
+  
 
   constructor(private repository:ProductRepository) {}
 
@@ -113,6 +114,14 @@ export class ShopComponent implements OnInit{
     console.log('PageNum', pageNum);
     this.repository.selectedPage=pageNum;
     this.getNextPageItems();
+  }
+
+  reduceQty(){
+    this.qty--;
+  }
+
+  increaseQty(){
+    this.qty++;
   }
 
   

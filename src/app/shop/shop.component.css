@@ -3,10 +3,13 @@
 } */
 .qty-btn{
     width:25px;
-    max-height: 30px;
+    height: 35px;
+    border: 1px solid gray;
 }
 
 .qty{
     width:40px;
-    max-height: 30px;
+    height: 35px;
+    border: 1px solid gray;
+    padding:1.5px;
 }
