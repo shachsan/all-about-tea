@@ -12,14 +12,12 @@ export class ShopComponent implements OnInit{
   totalPages:number[]=[];
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
+  qty:number=1;
 
   constructor(private repository:ProductRepository) {}
 
   changePerPageView(number:number){
     console.log('triggered changerPerPageView');
-    // if(this.totalPages.length<this.pageBtnsToDisplay){
-    //   this.pageBtnsToDisplay=this.totalPages.length;
-    // }
     this.repository.itemsPerPage=+number;
     this.repository.pageIndex=0;
     this.repository.selectedPage=1;

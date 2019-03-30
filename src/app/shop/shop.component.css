@@ -1,3 +1,12 @@
 /* .card{
     display: inline;
 } */
+.qty-btn{
+    width:25px;
+    max-height: 30px;
+}
+
+.qty{
+    width:40px;
+    max-height: 30px;
+}

@@ -3,17 +3,35 @@
     <div *ngFor="let tea of teas" class="card" style="width:100%">
       <img class="card-img-top img-responsive" [src]="tea.imageUrl" alt="card image cap" style="max-height:400px">
       <div class="card-body">
-        <div style="height:150px">
+        <div style="height:auto">
           <h2 class="text-center">{{tea.name}}</h2>
           <h3 class="text-center">{{tea.price | currency:"USD":"symbol":"2.2-2"}}</h3>
+
+         
+          <div class="text-center">
+            <div class="d-inline mr-1"><h5>Qty</h5></div>
+            <div class="btn-group d-inline">
+              <button class="qty-btn btn btn-danger">-</button>
+              <input class="qty text-center" type="text" name="qty" id="qty" [value]="qty">
+              <button class="qty-btn btn btn-success">+</button>
+            </div>
+         
+
+          <div class="my-3"><button class="btn btn-danger">ADD TO CART</button></div>
+          </div>
+
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{tea.brand}}</li>
-          <li class="list-group-item">{{tea.category}}</li>
-          <li class="list-group-item">{{tea.description}}</li>
+
+     
+        <div class="list-group list-group-flush">
+          <div class="list-group-item text-center">{{tea.brand}}</div>
+          <div class="list-group-item text-center">{{tea.category}}</div>
+          <div class="list-group-item text-center">{{tea.description}}</div>
         <!-- <ul class="list-group list-group-flush" *ngFor="let detail of tea | keyvalue"> -->
           <!-- <li class="list-group-item" *ngIf="detail.key!=='imageUrl'">{{detail.key}}: {{detail.value}}</li> -->
-        </ul>
+        </div>
+        
+
       </div>
     </div>
   </div>
