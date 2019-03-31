@@ -14,6 +14,7 @@ import { StaticDataSource } from './models/static.dataSouce';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Cart } from './models/Cart/cart.model';
     HomeComponent,
     ShopComponent,
     LeftSideBarComponent,
-    AddNewProductComponent
+    AddNewProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<div class="nav-link">
+  <div class="text-center">
+    <i class="fas fa-shopping-cart"></i>
+    <span [class]="checkDigit()">{{itemCount}}</span>
+  </div>
+  <div>
+    <span class="ml-1" *ngIf="itemPrice==0">empty</span>
+    <span class="ml-1" *ngIf="itemPrice!=0">total: {{itemPrice | currency:"USD":"symbol":"2.2-2"}}</span>
+  </div>
+</div>

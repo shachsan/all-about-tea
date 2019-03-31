@@ -1,0 +1,20 @@
+.fas{
+    font-size: 1.9em;
+    /* margin-top: 10px; */
+}
+
+.qty{
+    z-index: 100;
+    font-size: 0.7em;
+    position: absolute;
+    color:white;
+    margin-top: 3px;
+}
+
+.single-digit-qty{
+    margin-left: -18px; 
+}
+
+.dbl-digit-qty{
+    margin-left: -22px; 
+}

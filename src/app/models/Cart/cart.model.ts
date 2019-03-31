@@ -18,6 +18,7 @@ export class Cart {
             this.itemList.push(new ItemList(product, qty));
             this.cartTotalPrice+=this.itemList[this.itemList.length-1].itemPrice;
             this.itemCount++;
+            console.log('itemList', this.itemList);
         }
 
         // this.updateCartTotals();

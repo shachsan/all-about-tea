@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from '../models/product.repository';
+import { Cart } from '../models/Cart/cart.model';
 
 @Component({
   selector: 'app-shop',
@@ -15,10 +16,9 @@ export class ShopComponent implements OnInit{
   qty:number=1;
   
 
-  constructor(private repository:ProductRepository) {}
+  constructor(private repository:ProductRepository, private cart:Cart) {}
 
   changePerPageView(number:number){
-    console.log('triggered changerPerPageView');
     this.repository.itemsPerPage=+number;
     this.repository.pageIndex=0;
     this.repository.selectedPage=1;
@@ -36,13 +36,10 @@ export class ShopComponent implements OnInit{
   
   get pageNumbers():number[]{
     this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
-    console.log('begin indx', this.beginPgIdx, 'last page idx', this.lastPageIndex);
-    console.log('total pages', this.totalPages.slice(this.beginPgIdx,this.lastPageIndex));
     return this.totalPages.slice(this.beginPgIdx,this.lastPageIndex);
   }
   
   get lastPageIndex():number{
-    console.log('total length', this.totalPages.length);
     if(this.totalPages.length<=this.pageBtnsToDisplay){
       return this.beginPageIndex+this.totalPages.length;
     }else{
@@ -72,7 +69,6 @@ export class ShopComponent implements OnInit{
   }
 
   getNextPageItems(){
-    console.log('get next page items');
     this.repository.pageIndex=(this.repository.selectedPage-1)*this.repository.itemsPerPage;
     this.repository.setItemsPerPage();
   }
@@ -111,9 +107,14 @@ export class ShopComponent implements OnInit{
 
     
   setPageNum(pageNum:number){
-    console.log('PageNum', pageNum);
     this.repository.selectedPage=pageNum;
     this.getNextPageItems();
+  }
+
+  //shopping cart implementation
+  addToCart(product:Product){
+    // console.log(product);
+    this.cart.addItemToCart(product);
   }
 
   reduceQty(e:Event){
@@ -126,7 +127,6 @@ export class ShopComponent implements OnInit{
 
   
   ngOnInit() {
-    console.log('onInit');
     this.itemsPerPage=this.repository.itemsPerPage;
   }
 
