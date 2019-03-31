@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../models/Cart/cart.model';
+import { Cart } from 'src/app/models/Cart/cart.model';
 
 
 @Component({
@@ -21,6 +21,10 @@ export class ShoppingCartComponent implements OnInit {
 
   get itemPrice():any{
       return this.cart.cartTotalPrice;
+  }
+
+  cartSummary(){
+    
   }
 
   checkDigit():string{

@@ -8,13 +8,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
+import { ShoppingCartComponent } from './shopping-cart/cart-summary/shopping-cart.component';
+import { CartDetailsComponent } from './shopping-cart/cart-details/cart-details.component';
 import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
+import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ProductRepository } from './models/product.repository';
 import { StaticDataSource } from './models/static.dataSouce';
-import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ShopComponent,
     LeftSideBarComponent,
     AddNewProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CartDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+
   ],
   providers: [ProductRepository, StaticDataSource, Cart],
   bootstrap: [AppComponent]
