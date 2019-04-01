@@ -16,6 +16,8 @@ import { ProductRepository } from './models/product.repository';
 import { StaticDataSource } from './models/static.dataSouce';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
+import { ChangeTextDirective } from './change-text.directive';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { Cart } from './models/Cart/cart.model';
     AddNewProductComponent,
     ShoppingCartComponent,
     CartDetailsComponent,
+    ChangeTextDirective,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
