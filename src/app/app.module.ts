@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
 import { ChangeTextDirective } from './change-text.directive';
 import { TestComponent } from './test/test.component';
+import { MoveElementDirective } from './move-element.directive';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { TestComponent } from './test/test.component';
     CartDetailsComponent,
     ChangeTextDirective,
     TestComponent,
+    MoveElementDirective,
   ],
   imports: [
     BrowserModule,

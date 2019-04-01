@@ -13,9 +13,11 @@ import {
 
 export class ChangeTextDirective implements OnInit {
 
-  @HostBinding('textContent') text:string;
-  // @HostListener('textContent') initialText:string;
+  @HostBinding('style.top') top:string='10'
+  @HostBinding('style.left') left:string='50'
+  @HostListener('click') onclick(){
 
+  }
   constructor(private eleRef:ElementRef, private renderer:Renderer2){}
 
   ngOnInit(){
