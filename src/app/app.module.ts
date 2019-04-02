@@ -19,6 +19,7 @@ import { Cart } from './models/Cart/cart.model';
 import { ChangeTextDirective } from './change-text.directive';
 import { TestComponent } from './test/test.component';
 import { MoveElementDirective } from './move-element.directive';
+import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/checkout-summary.component';
 
 
 @NgModule({
@@ -33,9 +34,7 @@ import { MoveElementDirective } from './move-element.directive';
     AddNewProductComponent,
     ShoppingCartComponent,
     CartDetailsComponent,
-    ChangeTextDirective,
-    TestComponent,
-    MoveElementDirective,
+    CheckoutSummaryComponent,
   ],
   imports: [
     BrowserModule,

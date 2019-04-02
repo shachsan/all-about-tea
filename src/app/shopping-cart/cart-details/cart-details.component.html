@@ -1,3 +1,41 @@
-<p>
-  This is the cart details page!
-</p>
+<div class="row">
+  <div class="col-sm-9">
+    <div class="card" *ngFor="let item of cartItems">
+      <div class="card-body">
+        <img class="img-responsive form-inline float-sm-left" [src]="item.product.imageUrl" 
+            alt="item.product.name" width="100px" height="100px">
+            
+            <div class="float-sm-left">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{item.product.brand}}</li>
+                <li class="list-group-item">{{item.product.name}}</li>
+                <li class="list-group-item">{{item.product.category}}</li>
+              </ul>
+            </div>
+
+            <div class="btn-group float-sm-left form-inline">
+              <button class="qty-btn" (click)="reduceQty($event)">-</button>
+              <div><input class="qty text-center" type="text" name="qty" id="qty" [value]="item.quantity"></div>
+              <button class="qty-btn" (click)="increaseQty($event)">+</button>
+            </div>
+
+            <div class="list-group float-sm-right">
+              <span class="list-group-item">Each Price ${{item.product.price}}</span>
+              <span class="list-group-item">Total Price ${{item.itemPrice}}</span>
+            </div>
+      </div>  
+    </div>
+
+    <div class="card">
+      <div class="card-body text-center">
+        <span>Total</span>
+        <span class="float-sm-right list-group-item">${{cartTotalPrice}}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-3">
+    <app-checkout-summary></app-checkout-summary>
+  </div>
+</div>
