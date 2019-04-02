@@ -1,3 +1,19 @@
-<p>
-  checkout-summary works!
-</p>
+<div class="card">
+    <div class="card-body">
+      <span class="list-group-item d-inline">Subtotal</span>
+      <span class="float-sm-right">${{cartTotalPrice}}</span><br/><br/>
+      <span class="list-group-item d-inline">Shipping</span>
+      <span class="float-sm-right">{{shippingCharge===0 ? 'Free' : '$10'}}</span>
+    </div>
+</div>
+  
+<div class="card">
+    <div class="card-body">
+        <span class="list-group-item d-inline">Total</span>
+        <span class="float-sm-right">${{checkoutTotal}}</span><br/><br/>
+    </div>
+</div>
+
+  <button class="btn btn-danger w-100 p-3">
+      Checkout
+  </button>

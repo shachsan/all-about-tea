@@ -15,9 +15,7 @@ export class CartDetailsComponent implements OnInit {
     return this.cart.itemList;
   }
 
-  get cartTotalPrice():number{
-    return this.cart.cartTotalPrice;
-  }
+ 
   ngOnInit() {
   }
 
