@@ -13,7 +13,7 @@ export class ShopComponent implements OnInit{
   totalPages:number[]=[];
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
-  qty:number=1;
+  
   
 
   constructor(private repository:ProductRepository, private cart:Cart) {}
@@ -116,16 +116,7 @@ export class ShopComponent implements OnInit{
     // console.log(product);
     this.cart.addItemToCart(product);
   }
-
-  reduceQty(e:Event){
-    this.qty--;
-  }
-
-  increaseQty(e:Event){
-    this.qty++;
-  }
-
-  
+ 
   ngOnInit() {
     this.itemsPerPage=this.repository.itemsPerPage;
   }

@@ -8,7 +8,7 @@ export class Cart {
     public cartTotalPrice:number=0;
 
     addItemToCart(product:Product, qty:number=1){
-        let item=this.itemList.find(item=>item.product===product);
+        let item=this.findProduct(product);
     
         if(item!==undefined){
             let itemPrice=item.itemPrice;
@@ -21,14 +21,26 @@ export class Cart {
             console.log('itemList', this.itemList);
         }
 
-        // this.updateCartTotals();
     }
 
-    // updateCartTotals(){
-    //     this.itemCount=0;
-    //     this.cartTotalPrice=0;
+    editQuanity(product:Product, editType:String){
+        let item=this.findProduct(product);
 
-    // }
+        if(editType==='increase'){
+            let itemPrice=item.itemPrice;
+            item.quantity++;
+            this.cartTotalPrice=this.cartTotalPrice-itemPrice+item.itemPrice;
+        }else if(editType==='decrease'){
+            let itemPrice=item.itemPrice;
+            item.quantity--;
+            this.cartTotalPrice=this.cartTotalPrice-itemPrice+item.itemPrice;
+        }
+    }
+
+    findProduct(product:Product){
+        return this.itemList.find(item=>item.product===product);
+    }
+
 };
 
 export class ItemList{

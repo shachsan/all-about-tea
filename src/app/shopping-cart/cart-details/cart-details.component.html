@@ -1,31 +1,37 @@
 <div class="row">
   <div class="col-sm-9">
-    <div class="card" *ngFor="let item of cartItems">
-      <div class="card-body">
-        <img class="img-responsive form-inline float-sm-left" [src]="item.product.imageUrl" 
-            alt="item.product.name" width="100px" height="100px">
-            
-            <div class="float-sm-left">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{item.product.brand}}</li>
-                <li class="list-group-item">{{item.product.name}}</li>
-                <li class="list-group-item">{{item.product.category}}</li>
-              </ul>
-            </div>
+    <div class="row" *ngFor="let item of cartItems">
+      <!-- <div class="card-body"> -->
+        <div class="col col-md-2">
+          <img class="img-responsive" [src]="item.product.imageUrl" 
+              alt="item.product.name" width="120px" height="120px">
+        </div>
 
-            <div class="btn-group float-sm-left form-inline">
-              <button class="qty-btn" (click)="reduceQty($event)">-</button>
-              <div><input class="qty text-center" type="text" name="qty" id="qty" [value]="item.quantity"></div>
-              <button class="qty-btn" (click)="increaseQty($event)">+</button>
-            </div>
+        <div class="col col-md-4">
+          <!--  class="list-group list-group-flush" -->
+          <ul class="list-group">
+            <li class="list-group-item">{{item.product.brand}}</li>
+            <li class="list-group-item">{{item.product.name}}</li>
+            <li class="list-group-item">{{item.product.category}}</li>
+          </ul>
+        </div>
+                
+        <div class="col-md-3 text-center">
+                <div class="mr-1"><h5>Qty</h5></div>
+                <div class="btn-group">
+                  <button class="d-inline qty-btn" (click)="editQty(item.product, 'decrease')">-</button>
+                  <div><input class="qty text-center" type="text" name="qty" id="qty" [value]="item.quantity"></div>
+                  <button class="qty-btn" (click)="editQty(item.product, 'increase')">+</button>
+                </div>
+        </div>
 
-            <div class="list-group float-sm-right">
-              <span class="list-group-item">Each Price ${{item.product.price}}</span>
-              <span class="list-group-item">Total Price ${{item.itemPrice}}</span>
-            </div>
-      </div>  
-    </div>
+        <div class="list-group col-md-3">
+          <span class="list-group-item">Each Price ${{item.product.price}}</span>
+          <span class="list-group-item">Total Price ${{item.itemPrice}}</span>
+        </div>
 
+      </div>
+    <!-- </div> -->
   </div>
 
   <div class="col-md-3">
