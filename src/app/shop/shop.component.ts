@@ -116,6 +116,11 @@ export class ShopComponent implements OnInit{
     // console.log(product);
     this.cart.addItemToCart(product);
   }
+
+  cartItemQty(product:Product){
+    // console.log(product);
+    return this.cart.getCartItemQty(product);
+  }
  
   ngOnInit() {
     this.itemsPerPage=this.repository.itemsPerPage;

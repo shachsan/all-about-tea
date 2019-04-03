@@ -14,7 +14,11 @@
   
            
             <div class="text-center">
-              <div class="my-3"><button class="btn btn-danger" (click)="addToCart(tea)">ADD TO CART</button></div>
+              <div class="my-3">
+                <span *ngIf="cartItemQty(tea)" class="qty-in-cart">{{cartItemQty(tea)}} already in <i class="fas fa-shopping-cart"></i> </span>
+                <button class="btn btn-danger w-100" (click)="addToCart(tea)">ADD TO CART
+                </button>
+              </div>
             </div>
   
           </div>

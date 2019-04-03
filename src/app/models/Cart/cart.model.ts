@@ -37,6 +37,13 @@ export class Cart {
         }
     }
 
+    getCartItemQty(product:Product){
+        let item=this.findProduct(product);
+        if(item){
+            return this.findProduct(product).quantity;
+        }
+    }
+
     findProduct(product:Product){
         return this.itemList.find(item=>item.product===product);
     }
