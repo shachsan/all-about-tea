@@ -123,7 +123,7 @@ export class ShopComponent implements OnInit{
   }
  
   ngOnInit() {
-    this.itemsPerPage=this.repository.itemsPerPage;
+    // this.itemsPerPage=this.repository.itemsPerPage;
   }
 
 
