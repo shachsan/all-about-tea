@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-9">
-    <div class="row" *ngFor="let item of cartItems">
+    <div class="row mb-3 shadow bg-white rounded align-items-center" *ngFor="let item of cartItems">
       <!-- <div class="card-body"> -->
         <div class="col col-md-2">
           <img class="img-responsive" [src]="item.product.imageUrl" 
@@ -10,24 +10,25 @@
         <div class="col col-md-4">
           <!--  class="list-group list-group-flush" -->
           <ul class="list-group">
-            <li class="list-group-item">{{item.product.brand}}</li>
-            <li class="list-group-item">{{item.product.name}}</li>
-            <li class="list-group-item">{{item.product.category}}</li>
+            <li class="list-group-item border-0">{{item.product.brand}}</li>
+            <li class="list-group-item border-0">{{item.product.name}}</li>
+            <li class="list-group-item border-0">{{item.product.category}}</li>
           </ul>
         </div>
                 
         <div class="col-md-3 text-center">
                 <div class="mr-1"><h5>Qty</h5></div>
                 <div class="btn-group">
-                  <button class="d-inline qty-btn" (click)="editQty(item.product, 'decrease')">-</button>
+                  <button *ngIf="item.quantity===1" class="d-inline qty-btn" (click)="editQty(item.product, 'delete')"><i class="fas fa-trash-alt"></i></button>
+                  <button *ngIf="item.quantity>1" class="d-inline qty-btn" (click)="editQty(item.product, 'decrease')">-</button>
                   <div><input class="qty text-center" type="text" name="qty" id="qty" [value]="item.quantity"></div>
                   <button class="qty-btn" (click)="editQty(item.product, 'increase')">+</button>
                 </div>
         </div>
 
         <div class="list-group col-md-3">
-          <span class="list-group-item">Each Price ${{item.product.price}}</span>
-          <span class="list-group-item">Total Price ${{item.itemPrice}}</span>
+          <span class="list-group-item border-0">Each Price ${{item.product.price}}</span>
+          <span class="list-group-item border-0">Total Price ${{item.itemPrice}}</span>
         </div>
 
       </div>

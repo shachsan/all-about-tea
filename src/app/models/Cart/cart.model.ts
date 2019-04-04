@@ -34,6 +34,11 @@ export class Cart {
             let itemPrice=item.itemPrice;
             item.quantity--;
             this.cartTotalPrice=this.cartTotalPrice-itemPrice+item.itemPrice;
+        }else if(editType==='delete'){
+            let itemPrice=item.itemPrice;
+            this.itemCount--;
+            this.cartTotalPrice=this.cartTotalPrice-itemPrice;
+            this.itemList.splice(this.itemList.indexOf(item),1)
         }
     }
 
