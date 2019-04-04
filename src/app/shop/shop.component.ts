@@ -35,7 +35,7 @@ export class ShopComponent implements OnInit{
   
   
   get pageNumbers():number[]{
-    this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill().map((x, i)=>i+1);
+    this.totalPages=Array(Math.ceil(this.itemsCount/this.repository.itemsPerPage)).fill(1).map((x:number, i:number)=>i+1);
     return this.totalPages.slice(this.beginPgIdx,this.lastPageIndex);
   }
   

@@ -7,6 +7,7 @@ export class Product {
         public priceType: string,
         public brand: string,
         public size: number,
+        // public inventory?: number,
         public sizeUnit?: string,
         public imageUrl?: string,
         public id?:number, //? after parameter name indicates that this parameter is optional

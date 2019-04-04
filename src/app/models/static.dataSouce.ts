@@ -8,7 +8,7 @@ import { Observable, from } from 'rxjs';
             // to access its functionality through a feature called dependency injection
 export class StaticDataSource implements OnInit{
     private products:Product[]=[
-        new Product('Darjeeling Tea', 'Black tea', 'black tea', 22.50, 'reg', 'Mariage', 16, 'oz', 'https://cdn.shopify.com/s/files/1/1935/9089/products/mariage-freres-darjeeling-princeton-black-tea-tin_800x.jpg?v=1497906447'),
+        new Product('Darjeeling Tea', 'Black tea', 'black tea', 22.50, 'reg', 'Mariage', 16, 'oz','https://cdn.shopify.com/s/files/1/1935/9089/products/mariage-freres-darjeeling-princeton-black-tea-tin_800x.jpg?v=1497906447'),
         new Product('Eros Tea', 'Black tea', 'black tea', 20.50, 'reg', 'Mariage', 30, 'bags','https://images-na.ssl-images-amazon.com/images/I/51IBrd4JbkL._SY355_.jpg'),
         new Product('Japanese Green Tea', 'Green tea', 'Green tea', 12.50, 'reg', 'Dean & Deluca', 16, 'oz', 'https://www.deandeluca.com/media/catalog/product/cache/1/small_image/400x/9df78eab33525d08d6e5fb8d27136e95/3/6/362075_1_1.jpg'),
         new Product('Silver Moon', 'White tea', 'white tea', 18, 'reg', 'TWG TEA', 12, 'oz', 'https://www.davidjones.com/productimages/thumb/1/1439517_11890550_1140711.jpg'),
