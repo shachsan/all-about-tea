@@ -1,16 +1,16 @@
 <div *ngIf="cartTotalPrice>0; else emptyCart">
     <div class="card">
         <div class="card-body">
-            <span class="list-group-item d-inline">Subtotal</span>
+            <span class="list-group-item d-inline border-0">Subtotal</span>
             <span class="float-sm-right">${{cartTotalPrice}}</span><br/><br/>
-            <span class="list-group-item d-inline">Shipping</span>
+            <span class="list-group-item d-inline border-0">Shipping</span>
             <span class="float-sm-right">{{shippingCharge===0 ? 'Free' : '$10'}}</span>
         </div>
     </div>
     
     <div class="card">
         <div class="card-body">
-            <span class="list-group-item d-inline">Total</span>
+            <span class="list-group-item d-inline border-0">Total</span>
             <span class="float-sm-right">${{checkoutTotal}}</span><br/><br/>
         </div>
     </div>

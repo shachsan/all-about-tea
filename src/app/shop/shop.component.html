@@ -4,6 +4,7 @@
   </div>
   
   <div class="col-md-9">
+    <app-login *ngIf="showLoginForm"></app-login>
     <div *ngIf="teas.length" class="card-columns">
       <div *ngFor="let tea of teas" class="card" style="width:100%">
         <img class="card-img-top img-responsive" [src]="tea.imageUrl" alt="card image cap" style="max-height:400px">
@@ -15,7 +16,7 @@
            
             <div class="text-center">
               <div class="my-3">
-                <span *ngIf="cartItemQty(tea)" class="qty-in-cart">{{cartItemQty(tea)}} already in <i class="fas fa-shopping-cart"></i> </span>
+                <span *ngIf="cartItemQty(tea)" class="qty-in-cart">{{cartItemQty(tea)}} in <i class="fas fa-shopping-cart"></i> </span>
                 <button class="btn btn-danger w-100" (click)="addToCart(tea)">ADD TO CART
                 </button>
               </div>

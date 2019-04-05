@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from '../models/product.repository';
 import { Cart } from '../models/Cart/cart.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-shop',
@@ -13,16 +14,20 @@ export class ShopComponent implements OnInit{
   totalPages:number[]=[];
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
-  
+  // showLoginForm:boolean=false;
   
 
-  constructor(private repository:ProductRepository, private cart:Cart) {}
+  constructor(private repository:ProductRepository, private cart:Cart, private auth:AuthService) {}
 
   changePerPageView(number:number){
     this.repository.itemsPerPage=+number;
     this.repository.pageIndex=0;
     this.repository.selectedPage=1;
     this.repository.setItemsPerPage();
+  }
+
+  get showLoginForm():boolean{
+    return this.auth.renderLoginForm;
   }
   
   get teas():Product[]{
@@ -123,7 +128,8 @@ export class ShopComponent implements OnInit{
   }
  
   ngOnInit() {
-    // this.itemsPerPage=this.repository.itemsPerPage;
+    this.itemsPerPage=this.repository.itemsPerPage;
+    this.auth.renderLoginForm=false;
   }
 
 

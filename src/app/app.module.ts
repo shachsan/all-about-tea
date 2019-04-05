@@ -17,6 +17,10 @@ import { StaticDataSource } from './models/static.dataSouce';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
 import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/checkout-summary.component';
+import { PaginationDirective } from './directives/pagination.directive';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { LoginComponent } from './authentication/login/login.component';
 
 
 @NgModule({
@@ -32,6 +36,8 @@ import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/check
     ShoppingCartComponent,
     CartDetailsComponent,
     CheckoutSummaryComponent,
+    PaginationDirective,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,7 @@ import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/check
     ReactiveFormsModule,
 
   ],
-  providers: [ProductRepository, StaticDataSource, Cart],
+  providers: [ProductRepository, StaticDataSource, Cart, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
