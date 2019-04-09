@@ -32,7 +32,7 @@ export class AddNewProductComponent implements OnInit {
 
   onSubmit(){
     console.log('form data', this.addNewProductForm.value);
-    this.dataRepo.addProduct(this.addNewProductForm.value);
+    this.dataRepo.addProductToDb(this.addNewProductForm.value);
   }
 
   //below same method is defined in <left-side-bar> component(parent component, need to learn how to pass

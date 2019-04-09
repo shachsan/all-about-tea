@@ -15,6 +15,7 @@ import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ProductRepository } from './models/product.repository';
 import { StaticDataSource } from './models/static.dataSouce';
+// import {HttpRequests} from './http-requests/http.requests';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
 import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/checkout-summary.component';

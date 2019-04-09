@@ -1,7 +1,7 @@
 import { Product } from './product.model';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, from } from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http'; //This module is required to make request to server
 // import "rxjs/add/observable/from";
 
 
@@ -22,6 +22,7 @@ export class StaticDataSource implements OnInit{
     }
 
     addProduct(product:Product){
+        
         // console.log(this.products);
         // this.products.push(product);
     }
