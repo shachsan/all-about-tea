@@ -19,6 +19,7 @@ export class ProductRepository{
     constructor(private dataSource:StaticDataSource, private http:HttpClient){
         dataSource.getProducts().subscribe(
             data=>{
+                console.log('data from server', data);
                 this.products=data;
                 this.selectCatItems=data;
                 this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
@@ -76,15 +77,8 @@ export class ProductRepository{
     addProductToDb(product:Product){
         this.http.post<Product>('http://localhost:3000/add-product',product)
             .subscribe(res=>{
-                this.products.push(res)
+                this.products.push(res)//optimistic update.
             })
-        // const postedProduct=this.httpReq.postProduct(product);
-        // console.log('posted product', postedProduct);
     }
-
-    // optimisticAddProduct(product:Product){
-    //     this.products.push(product);
-    // }
-
 
 }
