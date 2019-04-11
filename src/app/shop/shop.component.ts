@@ -31,6 +31,7 @@ export class ShopComponent implements OnInit{
   }
   
   get teas():Product[]{
+    console.log('teas', this.repository.getProducts());
     return this.repository.getProducts();
   }
   

@@ -8,9 +8,9 @@ export class Product {
         public brand: string,
         public size: number,
         // public inventory?: number,
-        public sizeUnit?: string,
+        public _id:string, 
+        public sizeUnit?: string, //? after parameter name indicates that this parameter is optional
         public imageUrl?: string,
-        public id?:number, //? after parameter name indicates that this parameter is optional
 
         ){}
 }

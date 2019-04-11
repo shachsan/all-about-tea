@@ -23,6 +23,7 @@ import { PaginationDirective } from './directives/pagination.directive';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './authentication/login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { LoginComponent } from './authentication/login/login.component';
     CheckoutSummaryComponent,
     PaginationDirective,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
