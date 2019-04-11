@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpRequestService } from '../http-request.service';
+import { HttpRequestService } from '../../http-request.service';
 
 @Component({
   selector: 'app-signup',

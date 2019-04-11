@@ -23,7 +23,7 @@ import { PaginationDirective } from './directives/pagination.directive';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './authentication/login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 import { HttpRequestService } from './http-request.service';
 
 

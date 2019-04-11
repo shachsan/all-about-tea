@@ -8,11 +8,11 @@ export class AuthService {
   constructor(private router:Router) { }
 
   login(credential:any){
-    // console.log('login form', credential);
-    if(credential.username==='sanjay' && credential.password==='sai'){
-      this.loggedIn=true;
-      this.renderLoginForm=false;
-      this.router.navigate(['/cart']);
-    }
+    
+    // if(credential.username==='sanjay' && credential.password==='sai'){
+    //   this.loggedIn=true;
+    //   this.renderLoginForm=false;
+    //   this.router.navigate(['/cart']);
+    // }
   }
 }
