@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { HttpRequestService } from '../http-request.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   signupForm:FormGroup;
-  constructor() { }
+  constructor(private httpReq:HttpRequestService) { }
+
+  onSubmit(){
+    console.log('sign up data', this.signupForm.value);
+    this.httpReq.signup(this.signupForm.value)
+  }
 
   ngOnInit() {
     this.signupForm=new FormGroup({

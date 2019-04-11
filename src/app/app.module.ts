@@ -24,6 +24,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HttpRequestService } from './http-request.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ProductRepository, StaticDataSource, Cart, AuthGuard, AuthService],
+  providers: [ProductRepository, StaticDataSource, Cart, AuthGuard, AuthService, HttpRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
