@@ -12,11 +12,13 @@
     
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a [routerLink]="['/signup']" class="nav-link">Sign Up</a>
+        <a [routerLink]="['/signup']" class="nav-link" *ngIf=!userLoggedIn>Sign Up</a>
       </li>
-      
+
       <li class="nav-item">
-        <a [routerLink]="['/login']" class="nav-link">Log In</a>
+        <a [routerLink]="['/login']" class="nav-link" *ngIf="!userLoggedIn">Log In</a>
+        <a (click)='logout()' class="nav-link nav-log-out" *ngIf="userLoggedIn">Sign Out</a>
+
       </li>
       <li class="nav-item">
         <app-shopping-cart></app-shopping-cart>

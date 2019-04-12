@@ -1,7 +1,7 @@
 <div class="nav-link">
   <div class="text-center">
-    <i class="fas fa-shopping-cart" [routerLink]="['/cart']"></i>
-    <span [class]="checkDigit()" [routerLink]="['/cart']">{{itemCount}}</span>
+    <i class="fas fa-shopping-cart" [routerLink]="itemCount>0 ? ['/cart'] : []"></i>
+    <span [class]="checkDigit()" [routerLink]="itemCount>0 ? ['/cart'] : []">{{itemCount}}</span>
   </div>
   <div>
     <span class="ml-1" *ngIf="itemPrice==0">empty</span>

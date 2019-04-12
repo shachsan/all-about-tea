@@ -48,6 +48,11 @@ export class ProductRepository{
         }
     }
 
+    resetHomePage(){
+        this.itemsPerPage=3;
+        this.setProducts('');
+    }
+
     setItemsPerPage(){
         this.renderItems=this.selectCatItems.slice(this.pageIndex, this.pageIndex+this.itemsPerPage);
     }
@@ -75,7 +80,7 @@ export class ProductRepository{
 
     //fetch product for persistence. call addNewProduct methode of httpReq object to handle client request
     addProductToDb(product:Product){
-        this.http.post<Product>('http://localhost:3000/add-product',product)
+        this.http.post<Product>('http://localhost:3000/products',product)
             .subscribe(res=>{
                 this.products.push(res)//optimistic update.
             })

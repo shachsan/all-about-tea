@@ -18,11 +18,11 @@ export class StaticDataSource implements OnInit{
     }
 
     getProducts():Observable<Product[]>{
-        return this.http.get<Product[]>('http://localhost:3000/') //the http.get methods will return observale
+        return this.http.get<Product[]>('http://localhost:3000/products') //the http.get methods will return observale
     }
 
     addProduct(product:Product){
-        
+
         // console.log(this.products);
         // this.products.push(product);
     }

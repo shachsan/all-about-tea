@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit{
-  itemsPerPage:number;
+  // itemsPerPage:number=3;
   totalPages:number[]=[];
   beginPageIndex:number=0;
   pageBtnsToDisplay:number=3;
@@ -24,6 +24,9 @@ export class ShopComponent implements OnInit{
     this.repository.pageIndex=0;
     this.repository.selectedPage=1;
     this.repository.setItemsPerPage();
+  }
+  get itemsPerPage(){
+    return this.repository.itemsPerPage;
   }
 
   get showLoginForm():boolean{
@@ -129,7 +132,7 @@ export class ShopComponent implements OnInit{
   }
  
   ngOnInit() {
-    this.itemsPerPage=this.repository.itemsPerPage;
+    // this.itemsPerPage=this.repository.itemsPerPage;
     this.auth.renderLoginForm=false;
   }
 

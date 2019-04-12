@@ -18,13 +18,14 @@ import { StaticDataSource } from './models/static.dataSouce';
 // import {HttpRequests} from './http-requests/http.requests';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cart } from './models/Cart/cart.model';
-import { CheckoutSummaryComponent } from './shopping-cart/checkout-summary/checkout-summary.component';
+import { CheckoutSummaryComponent } from './checkout/checkout-summary/checkout-summary.component';
 import { PaginationDirective } from './directives/pagination.directive';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { HttpRequestService } from './http-request.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { HttpRequestService } from './http-request.service';
     PaginationDirective,
     LoginComponent,
     SignupComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
