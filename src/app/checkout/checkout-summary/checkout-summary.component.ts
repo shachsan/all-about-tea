@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/Cart/cart.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-summary',
@@ -8,7 +9,7 @@ import { Cart } from 'src/app/models/Cart/cart.model';
 })
 export class CheckoutSummaryComponent implements OnInit {
   
-  constructor(private cart:Cart) { }
+  constructor(private cart:Cart, private router:Router){}
 
 
   get cartTotalPrice():number{
@@ -26,6 +27,11 @@ export class CheckoutSummaryComponent implements OnInit {
   get checkoutTotal():number{
     return this.cartTotalPrice+this.shippingCharge;
   }
+
+  onClickCheckout(){
+    this.router.navigate(['/checkout'])
+  }
+
   ngOnInit() {
   }
 
