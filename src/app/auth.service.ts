@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   userLoggedIn():boolean{
-    // console.log('localStorage', this.getLocalToken());
+    console.log('localStorage', this.getLocalToken());
     return this.getLocalToken()===null ? false :true;
   }
 

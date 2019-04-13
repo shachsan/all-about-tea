@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
   // userLoggedIn:boolean=false;
   constructor(private auth:AuthService) { }
 
-  get userLoggedIn():boolean{
+  get loggedIn():boolean{
     return this.auth.userLoggedIn();
   }
 
