@@ -19,7 +19,19 @@ export class AuthService {
 
   userLoggedIn():boolean{
     // console.log('localStorage', this.getLocalToken());
-    return this.getLocalToken()===null ? false :true;
+    // return this.getLocalToken()===null ? false :true;
+    
+
+    //Steps
+    // 1. get the token from localStorage
+    //2. if there is a token
+        //2.1  verify if it is valid
+            // if valid?, return true
+            // if invalid?, return false
+
+    //3. if there is no token, return false
+      
+
   }
 
   logout(){
