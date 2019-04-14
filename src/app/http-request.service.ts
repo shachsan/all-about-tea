@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,11 @@ export class HttpRequestService {
       })
   }
 
-  login(credential:any){
-    this.http.post<{message:string, success:boolean, token:string}>('http://localhost:3000/user/login', credential)
-      .subscribe(res=>{
+  login(credential:any):Observable<{message:string, success:boolean, token:string}>{
+    return this.http.post<{message:string, success:boolean, token:string}>('http://localhost:3000/user/login', credential)
+      // .subscribe(res=>{
         
-        this.auth.storeToken(res.token);
-      })
+      //   this.auth.storeToken(res.token);
+      // })
   }
 }

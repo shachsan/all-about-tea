@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
   // private firstVisit=true;
+  targetRoute:string='';
   constructor(private router:Router, private auth:AuthService){}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -16,7 +17,9 @@ export class AuthGuard implements CanActivate {
           // this.router.navigate(['/checkout'])
           return true;
         }else{
+          console.log('state url', state.url);
           // this.router.navigate(['']);
+          this.targetRoute=state.url;
           this.auth.renderLoginForm=true;
           return false;
         }

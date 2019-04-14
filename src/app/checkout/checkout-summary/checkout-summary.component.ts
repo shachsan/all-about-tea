@@ -12,8 +12,9 @@ export class CheckoutSummaryComponent implements OnInit {
   
   constructor(private cart:Cart, 
               private router:Router, 
-              private route:ActivatedRoute,
-              private auth:AuthService){}
+              // private route:ActivatedRoute,
+              // private auth:AuthService
+              ){}
 
 
   get cartTotalPrice():number{
@@ -33,8 +34,8 @@ export class CheckoutSummaryComponent implements OnInit {
   }
 
   onClickCheckout(){
-    this.auth.targetRoute=[];
-    this.auth.targetRoute.push('/checkout');
+    // this.auth.targetRoute=[];
+    // this.auth.targetRoute.push('/checkout');
     this.router.navigate(['/checkout'])
   }
 
