@@ -17,7 +17,7 @@ export class HttpRequestService {
   }
 
   login(credential:any){
-    this.http.post<{message:string, token:string}>('http://localhost:3000/user/login', credential)
+    this.http.post<{message:string, success:boolean, token:string}>('http://localhost:3000/user/login', credential)
       .subscribe(res=>{
         
         this.auth.storeToken(res.token);

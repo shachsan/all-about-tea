@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/Cart/cart.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-checkout-summary',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class CheckoutSummaryComponent implements OnInit {
   
-  constructor(private cart:Cart, private router:Router){}
+  constructor(private cart:Cart, 
+              private router:Router, 
+              private route:ActivatedRoute,
+              private auth:AuthService){}
 
 
   get cartTotalPrice():number{
@@ -29,6 +33,8 @@ export class CheckoutSummaryComponent implements OnInit {
   }
 
   onClickCheckout(){
+    this.auth.targetRoute=[];
+    this.auth.targetRoute.push('/checkout');
     this.router.navigate(['/checkout'])
   }
 

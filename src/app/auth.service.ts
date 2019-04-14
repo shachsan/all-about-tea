@@ -6,6 +6,7 @@ import { ProductRepository } from './models/product.repository';
 @Injectable()
 export class AuthService {
   renderLoginForm=false;
+  targetRoute:Array<string>=[];
   // loggedIn:boolean=false;
   // token:string=null;
   constructor(private router:Router, private repo:ProductRepository) { }

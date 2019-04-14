@@ -10,10 +10,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {path:'', component:ShopComponent},
-  {path:'cart', component:CartDetailsComponent, canActivate:[AuthGuard]},
+  {path:'cart', component:CartDetailsComponent},
   {path:'signup', component:SignupComponent},
   {path:'login', component:LoginComponent},
-  {path:'checkout', component:CheckoutComponent},
+  {path:'checkout', component:CheckoutComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
