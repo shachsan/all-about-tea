@@ -22,19 +22,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log('form data', this.loginForm);
-    // this.auth.login(this.loginForm.value);
     this.httpReq.login(this.loginForm.value)
       .subscribe(res => {
         this.auth.storeToken(res.token);
         this.router.navigateByUrl(this.targetUrl);
       })
-    // if(this.auth.userLoggedIn()){
-    //   console.log('userlogged in', this.auth.userLoggedIn());
-    //   console.log('user logged in, redirecting to checkout');
-    // }else{
-    //   console.log('token not set yet');
-    // }
-
+ 
   }
 
   ngOnInit() {

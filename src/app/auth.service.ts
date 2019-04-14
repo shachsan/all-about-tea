@@ -6,13 +6,10 @@ import { ProductRepository } from './models/product.repository';
 @Injectable()
 export class AuthService {
   renderLoginForm=false;
-  // targetRoute:Array<string>=[];
-  // loggedIn:boolean=false;
-  // token:string=null;
+
   constructor(private router:Router, private repo:ProductRepository) { }
 
   storeToken(tok:any){
-    // this.token=token;
     localStorage.setItem('token', tok)
   }
 
@@ -21,7 +18,7 @@ export class AuthService {
   }
 
   userLoggedIn():boolean{
-    console.log('localStorage', this.getLocalToken());
+    // console.log('localStorage', this.getLocalToken());
     return this.getLocalToken()===null ? false :true;
   }
 

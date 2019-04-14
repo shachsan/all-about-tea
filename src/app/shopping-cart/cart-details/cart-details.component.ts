@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Cart, ItemList } from 'src/app/models/Cart/cart.model';
 import { Product } from '../../models/product.model';
 import { AuthService } from 'src/app/auth.service';
-// import { logging } from 'protractor';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
@@ -29,8 +27,6 @@ export class CartDetailsComponent implements OnInit {
 
  
   ngOnInit() {
-    // console.log('activated route', this.route);
-    // this.loggedIn
   }
 
 }

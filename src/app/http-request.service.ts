@@ -19,9 +19,5 @@ export class HttpRequestService {
 
   login(credential:any):Observable<{message:string, success:boolean, token:string}>{
     return this.http.post<{message:string, success:boolean, token:string}>('http://localhost:3000/user/login', credential)
-      // .subscribe(res=>{
-        
-      //   this.auth.storeToken(res.token);
-      // })
   }
 }

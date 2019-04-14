@@ -29,10 +29,6 @@ export class ShopComponent implements OnInit{
     return this.repository.itemsPerPage;
   }
 
-  // get showLoginForm():boolean{
-  //   return this.auth.renderLoginForm;
-  // }
-  
   get teas():Product[]{
     console.log('teas', this.repository.getProducts());
     return this.repository.getProducts();

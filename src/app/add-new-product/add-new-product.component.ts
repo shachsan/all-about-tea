@@ -11,7 +11,6 @@ export class AddNewProductComponent implements OnInit {
 
   addNewProductForm:FormGroup;
   itemCat:string[];
-  // newProduct:Product={};
 
   constructor(private dataRepo:ProductRepository) { }
 
