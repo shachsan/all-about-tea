@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { tokenName } from '@angular/compiler';
 import { ProductRepository } from './models/product.repository';
+import { HttpRequestService } from './http-request.service';
 
 @Injectable()
 export class AuthService {
   renderLoginForm=false;
 
-  constructor(private router:Router, private repo:ProductRepository) { }
+  constructor(private router:Router, private repo:ProductRepository, private httpReq:HttpRequestService) { }
 
   storeToken(tok:any){
     localStorage.setItem('token', tok)
@@ -30,7 +30,23 @@ export class AuthService {
             // if invalid?, return false
 
     //3. if there is no token, return false
-      
+    const token=this.getLocalToken();
+    console.log('in auth service userloggedin, token:', token);
+    if(!token){
+      return false;
+    }
+    // return true;
+    
+    this.httpReq.verifyToken(token)
+      .subscribe(res =>{
+        if(res.valid){
+          console.log('In auth service, token was verified');
+          return true;
+        }
+        console.log('In auth service, token was not verified');
+        return false;
+      })
+    
 
   }
 
