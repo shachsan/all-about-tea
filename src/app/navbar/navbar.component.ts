@@ -7,11 +7,13 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  // userLoggedIn:boolean=false;
+  userLoggedIn:boolean=false;
   constructor(private auth:AuthService) { }
 
   get loggedIn():boolean{
-    return this.auth.userLoggedIn();
+    
+    this.auth.userLoggedIn().subscribe(isLoggedIn=>this.userLoggedIn=isLoggedIn);
+    return this.userLoggedIn;
   }
 
   logout(){

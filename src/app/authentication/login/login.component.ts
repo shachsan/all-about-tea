@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
               ) { }
 
   onSubmit(){
-    console.log('form data', this.loginForm);
+    console.log('target url', this.targetUrl);
     this.httpReq.login(this.loginForm.value)
       .subscribe(res => {
         this.auth.storeToken(res.token);

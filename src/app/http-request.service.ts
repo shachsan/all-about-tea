@@ -21,10 +21,17 @@ export class HttpRequestService {
   }
 
   verifyToken(token:string){
-    const headers=new HttpHeaders({
-      'Content-Type':'application/json',
-      'Authorization':token
-    })
-    return this.http.post<{message:string, valid:Boolean}>('http://localhost:3000/users/authenticate', null, {headers:headers})
+    // const headers=new HttpHeaders({
+    //   'Content-Type':'application/json',
+    //   'Authorization':token
+    // })
+    return fetch('http://localhost:3000/users/authenticate',{
+        method:'POST',
+        headers:{'Content-Type':'application/json',
+                  'Authorization':token}
+                })
+    // return this.http.post<{message:string, valid:boolean}>('http://localhost:3000/users/authenticate', null, {headers:headers})
+      // .map(res=>res.json())
+            
   }
 }
