@@ -16,7 +16,7 @@ export class HttpRequestService {
       })
   }
 
-  login(credential:any):Observable<{message:string, success:boolean, token:string}>{
+  login(credential:any):Observable<{message:string, success:boolean, error:string, token:string}>{
     return this.http.post<{message:string, success:boolean, token:string}>('http://localhost:3000/users/login', credential)
   }
 

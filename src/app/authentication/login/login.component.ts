@@ -13,6 +13,8 @@ import { AuthGuard } from 'src/app/auth.guard';
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   targetUrl='';
+  wrongUsername:boolean=false;
+  wrongPass:boolean=false;
 
   constructor(private auth:AuthService, 
               private httpReq:HttpRequestService, 
@@ -24,12 +26,23 @@ export class LoginComponent implements OnInit {
     console.log('target url', this.targetUrl);
     this.httpReq.login(this.loginForm.value)
       .subscribe(res => {
+        // console.log('res.error ====> ', res);
+        
         this.auth.storeToken(res.token);
         this.auth.login();
         this.router.navigateByUrl(this.targetUrl);
+      },
+      err =>{
+        console.log('error =====> ', err.error);
+        if(err.error.error==="wrong email"){
+          this.wrongUsername=true;
+        }else if(err.error.error==="wrong password"){
+          this.wrongPass=true;
+        }
       })
+      }
  
-  }
+
 
   ngOnInit() {
     this.loginForm=new FormGroup({
