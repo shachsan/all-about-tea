@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { UserBasic } from '../models/user.basic.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,29 +9,30 @@ import { AuthService } from '../auth.service';
 })
 export class NavbarComponent implements OnInit{
   userLoggedIn:boolean=false;
-  // this.auth.isLoggedIn().subscribe(status=>this.userLoggedIn=status)
+  currentUser:UserBasic;
+  currentUserName: string;
   constructor(private auth:AuthService) {
    }
-  
+
   logout(){
     this.auth.logout();
-    // this.userLoggedIn=this.auth.userIsLoggedIn;
-    // this.auth.isLoggedIn()
-    //     .subscribe(status=>this.userLoggedIn=status)
   }
 
-  // get logginStatus():boolean{
-  //   return this.userLoggedIn=this.auth.userIsLoggedIn;
-  // }
-
-  
   ngOnInit() {
     this.auth.userLoggedIn()
-      .then(isLoggedIn=>this.userLoggedIn=isLoggedIn);
-
+      .then(isLoggedIn=>this.userLoggedIn=isLoggedIn)
+      .then(()=>{
+        this.currentUser=this.auth.currentUserBasic,
+        this.currentUserName=this.currentUser.first_name;
+      });
+      
       this.auth.isLoggedIn().subscribe(status => this.userLoggedIn=status);
-     
-    // this.userLoggedIn=this.auth.userIsLoggedIn;
+      this.auth.getCurrentUser().subscribe(user => {
+        this.currentUser=user;
+        this.currentUserName=this.currentUser.first_name;
+      })
+      // this.auth.getCurrentUser().subscribe(user => this.currentUserName=user.first_name);
+      
   }
 
 }

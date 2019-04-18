@@ -4,12 +4,15 @@ import { ProductRepository } from './models/product.repository';
 import { HttpRequestService } from './http-request.service';
 import { of, Observable, Subject } from 'rxjs';
 // import {tap, switchMap, catchError, } from 'rxjs/operators';
+import { UserBasic } from './models/user.basic.model';
 
 @Injectable()
 export class AuthService {
   renderLoginForm=false;
   userIsLoggedIn=false;
+  currentUserBasic:UserBasic;
   private loginState=new Subject<boolean>();
+  private currentUser=new Subject<UserBasic>();
 
   constructor(private router:Router, private repo:ProductRepository, 
               private httpReq:HttpRequestService) {}
@@ -18,8 +21,18 @@ export class AuthService {
     localStorage.setItem('token', tok)
   }
 
+  storeCurrentUserBasicInfo(info:UserBasic){
+    this.currentUserBasic=info;
+    this.currentUser.next(this.currentUserBasic);
+
+  }
+
   getLocalToken():any{
     return localStorage.getItem('token');
+  }
+
+  getCurrentUser():Observable<UserBasic>{
+    return this.currentUser.asObservable();
   }
 
   isLoggedIn():Observable<boolean>{
@@ -37,9 +50,11 @@ export class AuthService {
     } else {
        return await this.httpReq.verifyToken(token)
           .then(res=>res.json())
-          .then(tokenValid=>{
-            console.log('response token verification:', tokenValid);
-            return this.userIsLoggedIn=tokenValid.valid})
+          .then(user=>{
+            console.log('response token verification:', user);
+            this.currentUserBasic=user.user;
+            this.currentUser.next(this.currentUserBasic);
+            return this.userIsLoggedIn=user.valid})
     }
     // return this.userIsLoggedIn;
 }

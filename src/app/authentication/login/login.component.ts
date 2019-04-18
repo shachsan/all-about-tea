@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     console.log('target url', this.targetUrl);
     this.httpReq.login(this.loginForm.value)
       .subscribe(res => {
-        // console.log('res.error ====> ', res);
-        
+        console.log('server response for login ====> ', res);
+        this.auth.storeCurrentUserBasicInfo(res.user);
         this.auth.storeToken(res.token);
         this.auth.login();
         this.router.navigateByUrl(this.targetUrl);
