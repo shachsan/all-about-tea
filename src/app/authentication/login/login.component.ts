@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth:AuthService, 
               private httpReq:HttpRequestService, 
               private router: Router,
-              private authGuard:AuthGuard
+              private authGuard:AuthGuard,
               ) { }
 
   onSubmit(){
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.httpReq.login(this.loginForm.value)
       .subscribe(res => {
         this.auth.storeToken(res.token);
+        this.auth.login();
         this.router.navigateByUrl(this.targetUrl);
       })
  
