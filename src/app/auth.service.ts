@@ -41,6 +41,7 @@ export class AuthService {
 
 
   async userLoggedIn():Promise<boolean>{
+    console.log('=====inside auth userLoggedIn function======');
     // Make sure this is sync or need to be chained with the observable below
     const token = this.getLocalToken();
     console.log('token:', token);
@@ -54,7 +55,9 @@ export class AuthService {
             console.log('response token verification:', user);
             this.currentUserBasic=user.user;
             this.currentUser.next(this.currentUserBasic);
-            return this.userIsLoggedIn=user.valid})
+            this.userIsLoggedIn=user.valid;
+            this.loginState.next(this.userIsLoggedIn);
+            return this.userIsLoggedIn})
     }
     // return this.userIsLoggedIn;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpRequestService } from '../http-request.service';
+import { AuthService } from '../auth.service';
+import { UserBasic } from '../models/user.basic.model';
 
 @Component({
   selector: 'app-checkout',
@@ -10,9 +12,11 @@ import { HttpRequestService } from '../http-request.service';
 export class CheckoutComponent implements OnInit {
   checkoutForm:FormGroup;
   sameBillShipAddress:boolean=false;
-  user:string='';
+  user:UserBasic;
+  currentUserName:string='';
 
-  constructor(private httpReq:HttpRequestService) { }
+  constructor(private httpReq:HttpRequestService, 
+              private auth:AuthService) { }
 
   onChangeBilling(){
     if(this.checkoutForm.value.same_as_billing){
@@ -29,6 +33,12 @@ export class CheckoutComponent implements OnInit {
  }
 
   ngOnInit() {
+    this.auth.getCurrentUser().subscribe(user => {
+      this.user=user;
+      this.currentUserName=this.user.first_name;
+    })
+
+
     this.checkoutForm = new FormGroup({
       street_address: new FormControl(null),
       apt: new FormControl(null),

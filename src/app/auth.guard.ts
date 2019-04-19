@@ -10,13 +10,20 @@ export class AuthGuard implements CanActivate {
   userLoggedIn=false;
   targetRoute:string='';
   constructor(private auth:AuthService){
+    console.log('====inside authguard constructor===>');
+    
     this.auth.isLoggedIn()
-            .subscribe(status => this.userLoggedIn=status);
-  }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
+    .subscribe(status => {
+      console.log('====inside authguard constructor>subscribe===>');
+              
+              this.userLoggedIn=status
+            console.log('this.userLoggedIn inside authguard constructor subscription', this.userLoggedIn);});
+            }
+            canActivate(
+              route: ActivatedRouteSnapshot,
+              state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+                
+                console.log('authguard if userLoggedIn===>', this.userLoggedIn);
 
       // return this.auth.userLoggedIn()
       //   .then(isLoggedIn=>this.userLoggedIn=isLoggedIn)
